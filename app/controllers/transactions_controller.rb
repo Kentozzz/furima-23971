@@ -10,9 +10,9 @@ class TransactionsController < ApplicationController
 
   def create
     @item_transaction = PayForm.new(item_transaction_params)
-    if @item_transaction.save
+    if @item_transaction.valid?
       pay_item
-      # @item_transaction.save
+      @item_transaction.save
       return redirect_to root_path
     end
     render 'index'
