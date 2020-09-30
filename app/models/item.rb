@@ -10,7 +10,16 @@ class Item < ApplicationRecord
     validates :info
     validates :price
   end
-  
+
+  # 選択関係で「---」のままになっていないか検証
+  with_options numericality: { other_than: 0, message: 'Select' } do
+    validates :category_id
+    validates :sales_status_id
+    validates :shipping_fee_status_id
+    validates :prefecture_id
+    validates :scheduled_delivery_id
+  end
+
   # <<アクティブハッシュの設定関連>>
   belongs_to_active_hash :category
   belongs_to_active_hash :sales_status
