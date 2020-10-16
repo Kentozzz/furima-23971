@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("card-cvc").removeAttribute("name");
         document.getElementById("card-exp-month").removeAttribute("name");
         document.getElementById("card-exp-year").removeAttribute("name");
+        // カード情報を登録しないようにしているc
         document.getElementById("charge-form").submit();
         document.getElementById("charge-form").reset();
       }
@@ -43,6 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
           // window.alert('購入処理に失敗しました。\nお手数ですが最初からやり直してください。');
           sendWithoutCardInfo()
         }
+        
       });
     });
   }

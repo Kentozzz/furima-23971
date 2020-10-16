@@ -1,12 +1,15 @@
 class PayForm
-  include ActiveModel::Model
+  include ActiveModel::Model #ActiveModel::Modelモジュールをinclude引き継いでいる（これでバリデーションが使えるようになる）
   attr_accessor :item_id, :token, :postal_code, :prefecture, :city, :addresses, :building, :phone_number, :user_id
+  # attr_accessorを使うことでitem_idなどをここで使うことができるようになる。
 
-  # <<バリデーション>>
+  # <<バリデーション>>includeによってバリデーションが使えるようになっている
   with_options presence: true do
     validates :item_id
     validates :token, presence: { message: "can't be blank" }
+    #郵便番号は3文字-4文字
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
+    #都道府県（0以外でなければ弾く）numericalityは数値のみがつかわれている事を検証。
     validates :prefecture, numericality: { other_than: 0, message: 'Select' }
     validates :city
     validates :addresses
