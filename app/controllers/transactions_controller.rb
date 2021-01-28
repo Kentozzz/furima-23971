@@ -4,7 +4,6 @@ class TransactionsController < ApplicationController
   
   def index
     return redirect_to root_path if current_user.id == select_item.user_id || select_item.item_transaction != nil
-    # PayFormの作成設定は後ほど行います。
     @item_transaction = PayForm.new
   end
 
