@@ -17,6 +17,8 @@ class TransactionsController < ApplicationController
     render 'index'
   end
 
+
+  
   private
 
   def item_transaction_params
